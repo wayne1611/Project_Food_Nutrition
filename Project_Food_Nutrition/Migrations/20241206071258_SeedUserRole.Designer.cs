@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_Food_Nutrition.Data;
 
@@ -11,9 +12,11 @@ using Project_Food_Nutrition.Data;
 namespace Project_Food_Nutrition.Migrations
 {
     [DbContext(typeof(Project_Food_NutritionContext))]
-    partial class Project_Food_NutritionContextModelSnapshot : ModelSnapshot
+    [Migration("20241206071258_SeedUserRole")]
+    partial class SeedUserRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
