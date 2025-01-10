@@ -1,0 +1,43 @@
+﻿@page "/Calories"
+@rendermode InteractiveServer
+
+<PageTitle>Calories Tracker</PageTitle>
+
+<h1>Calories Tracker</h1>
+
+<p role="status">Total calories: @totalCalories</p>
+
+<button class="btn btn-primary" @onclick="ShowInputField">Add Calories</button>
+
+@if (showInput)
+{
+    <div>
+        <input @bind="calorieInput" type="number" placeholder="Enter calories" class="form-control" />
+        <button class="btn btn-success" @onclick="AddCalories">Add</button>
+        <button class="btn btn-secondary" @onclick="CancelInput">Cancel</button>
+    </div>
+}
+
+@code {
+    private int totalCalories = 0;
+    private int calorieInput = 0;
+    private bool showInput = false;
+
+    private void ShowInputField()
+    {
+        showInput = true;
+    }
+
+    private void AddCalories()
+    {
+        totalCalories += calorieInput;
+        calorieInput = 0; // Clear the input
+        showInput = false; // Hide the input field
+    }
+
+    private void CancelInput()
+    {
+        showInput = false;
+        calorieInput = 0; // Clear the input
+    }
+}

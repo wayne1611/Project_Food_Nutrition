@@ -1,0 +1,189 @@
+﻿@page "/Recipe"
+<h3>Recipe Page</h3>
+<h5>Find your best meal to meet your goal</h5>
+
+<style>
+    /* Styling for the overall search container */
+    .search-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-top: 20px;
+    }
+
+    /* Styling for the input field */
+    .search-input {
+        width: 300px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 25px; /* Fully rounded corners */
+        font-size: 16px;
+        background-color: #e0f7e0; /* Gray background */
+        color: #fff; /* White text color */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        outline: none; /* Removes focus outline */
+    }
+
+    /* Styling for the search button */
+    .search-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background-color: #6c757d; /* Gray background */
+        border: none;
+        border-radius: 50%; /* Fully circular button */
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: background-color 0.3s ease;
+    }
+
+    /* Search icon styling */
+    .search-icon {
+        color: white;
+        font-size: 18px;
+    }
+
+    /* Hover effect for the button */
+    .search-btn:hover {
+        background-color: #00838f; /* Darker blue on hover */
+    }
+
+    /* Recipe container styling */
+    .recipe-container {
+        padding: 20px;
+        background-color: #6c757d; /* Gray background */
+        border-radius: 25px; /* Rounded corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: auto;
+        text-align: left;
+        color: #fff; /* White text color */
+    }
+
+    .recipe-container h4 {
+        text-align: center;
+        color: #fff; /* White text for the recipe title */
+    }
+
+    .recipe-container ul, .recipe-container ol {
+        margin-left: 20px;
+        padding-left: 20px;
+    }
+</style>
+
+<div class="search-container">
+    <input type="text" placeholder="Search..." class="search-input" />
+    <button class="search-btn">
+        <span class="search-icon">🔍</span>
+    </button>
+</div>
+
+@if (!string.IsNullOrEmpty(currentRecipeTitle))
+{
+    <div class="recipe-container">
+        <h4>@currentRecipeTitle</h4>
+
+        <h5>Ingredients:</h5>
+        <ul>
+            @foreach (var ingredient in currentIngredients)
+            {
+                <li>@ingredient</li>
+            }
+        </ul>
+
+        <h5>Preparation Steps:</h5>
+        <ol>
+            @foreach (var step in currentPreparationSteps)
+            {
+                <li>@step</li>
+            }
+        </ol>
+    </div>
+}
+else if (searchTriggered)
+{
+    <p>No recipe found for "@searchQuery".</p>
+}
+
+@code {
+    private string searchQuery = string.Empty;
+    private bool searchTriggered = false;
+
+    private string currentRecipeTitle = string.Empty;
+    private List<string> currentIngredients = new List<string>();
+    private List<string> currentPreparationSteps = new List<string>();
+
+    private readonly Dictionary<string, (List<string> Ingredients, List<string> Steps)> recipes = new()
+    {
+        {
+            "Simple Pancakes",
+            (
+                new List<string>
+                {
+                    "1 cup all-purpose flour",
+                    "2 tablespoons sugar",
+                    "1 teaspoon baking powder",
+                    "1/2 teaspoon baking soda",
+                    "Pinch of salt",
+                    "1 cup milk",
+                    "1 large egg",
+                    "2 tablespoons melted butter",
+                    "1 teaspoon vanilla extract"
+                },
+                new List<string>
+                {
+                    "In a large bowl, whisk together flour, sugar, baking powder, baking soda, and salt.",
+                    "In another bowl, mix milk, egg, melted butter, and vanilla extract.",
+                    "Combine wet and dry ingredients and stir until just combined.",
+                    "Heat a non-stick skillet over medium heat and lightly grease it.",
+                    "Pour 1/4 cup of batter onto the skillet and cook until bubbles form on the surface.",
+                    "Flip the pancake and cook until golden brown.",
+                    "Serve warm with syrup or your favorite toppings."
+                }
+            )
+        },
+        {
+            "Fried Rice",
+            (
+                new List<string>
+                {
+                    "2 cups cooked rice",
+                    "1/2 cup diced vegetables",
+                    "2 eggs",
+                    "2 tablespoons soy sauce",
+                    "1 tablespoon sesame oil",
+                    "1/4 cup chopped green onions"
+                },
+                new List<string>
+                {
+                    "Heat sesame oil in a pan over medium heat.",
+                    "Scramble eggs in the pan and set aside.",
+                    "Add diced vegetables to the pan and sauté until tender.",
+                    "Add cooked rice and soy sauce, mixing well.",
+                    "Stir in scrambled eggs and green onions.",
+                    "Cook for another 2-3 minutes and serve hot."
+                }
+            )
+        }
+    };
+
+    private void SearchRecipe()
+    {
+        searchTriggered = true;
+        if (recipes.TryGetValue(searchQuery, out var recipe))
+        {
+            currentRecipeTitle = searchQuery;
+            currentIngredients = recipe.Ingredients;
+            currentPreparationSteps = recipe.Steps;
+        }
+        else
+        {
+            currentRecipeTitle = string.Empty;
+            currentIngredients.Clear();
+            currentPreparationSteps.Clear();
+        }
+    }
+}
