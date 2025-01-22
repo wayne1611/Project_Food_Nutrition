@@ -62,12 +62,12 @@ else
     private int Id { get; set; }
 
     [SupplyParameterFromForm]
-    private Make? Make { get; set; }
+    private Recipe? Make { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         using var context = DbFactory.CreateDbContext();
-        Make ??= await context.Make.FirstOrDefaultAsync(m => m.Id == Id);
+        Make ??= await context.Recipe.FirstOrDefaultAsync(m => m.Id == Id);
 
         if (Make is null)
         {
@@ -104,6 +104,6 @@ else
     private bool MakeExists(int id)
     {
         using var context = DbFactory.CreateDbContext();
-        return context.Make.Any(e => e.Id == id);
+        return context.Recipe.Any(e => e.Id == id);
     }
 }

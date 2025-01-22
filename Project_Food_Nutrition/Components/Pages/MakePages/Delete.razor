@@ -45,7 +45,7 @@
 </div>
 
 @code {
-    private Make? make;
+    private Recipe? make;
 
     [SupplyParameterFromQuery]
     private int Id { get; set; }
@@ -53,7 +53,7 @@
     protected override async Task OnInitializedAsync()
     {
         using var context = DbFactory.CreateDbContext();
-        make = await context.Make.FirstOrDefaultAsync(m => m.Id == Id);
+        make = await context.Recipe.FirstOrDefaultAsync(m => m.Id == Id);
 
         if (make is null)
         {
@@ -64,8 +64,8 @@
     private async Task DeleteMake()
     {
         using var context = DbFactory.CreateDbContext();
-        context.Make.Remove(make!);
+        context.Recipe.Remove(make!);
         await context.SaveChangesAsync();
-        NavigationManager.NavigateTo("/makes");
+        NavigationManager.NavigateTo("/recipe");
     }
 }

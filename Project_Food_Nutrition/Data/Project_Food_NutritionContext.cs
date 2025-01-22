@@ -7,23 +7,23 @@ namespace Project_Food_Nutrition.Data
 {
     public class Project_Food_NutritionContext(DbContextOptions<Project_Food_NutritionContext> options) : IdentityDbContext<Project_Food_NutritionUser>(options)
     {
-        public DbSet<Project_Food_Nutrition.Domain.Make> Make { get; set; } = default!;
+        public DbSet<Project_Food_Nutrition.Domain.Recipe> Recipe { get; set; } = default!;
 
-        public DbSet<Project_Food_Nutrition.Domain.Model> Model { get; set; } = default!;
+        public DbSet<Project_Food_Nutrition.Domain.Macros> Macros { get; set; } = default!;
 
-        public DbSet<Project_Food_Nutrition.Domain.Colour> Color { get; set; } = default!;
-        public DbSet<Project_Food_Nutrition.Domain.Vehicle> Vehicle { get; set; } = default!;
-        public DbSet<Project_Food_Nutrition.Domain.Booking> Booking { get; set; } = default!;
-        public DbSet<Project_Food_Nutrition.Domain.Customer> Customer { get; set; } = default!;
+        public DbSet<Project_Food_Nutrition.Domain.Calories> Calories { get; set; } = default!;
+        public DbSet<Project_Food_Nutrition.Domain.MacrosTracking> MacrosTracking { get; set; } = default!;
+        public DbSet<Project_Food_Nutrition.Domain.Staff> Staff{ get; set; } = default!;
+        public DbSet<Project_Food_Nutrition.Domain.Users> User { get; set; } = default!;
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
             base.OnModelCreating(builder);
-            builder.ApplyConfiguration(new ColourSeed());
-            builder.ApplyConfiguration(new MakeSeed());
-            builder.ApplyConfiguration(new ModelSeed());
+            builder.ApplyConfiguration(new CaloriesSeed());
+            builder.ApplyConfiguration(new RecipeSeed());
+            builder.ApplyConfiguration(new MacrosSeed());
         }
 
     }
