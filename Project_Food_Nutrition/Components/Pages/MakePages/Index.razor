@@ -6,14 +6,17 @@
 @implements IAsyncDisposable
 @inject IDbContextFactory<Project_Food_Nutrition.Data.Project_Food_NutritionContext> DbFactory
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Recipe Index</PageTitle>
 
-<h1>Index</h1>
+<h1>Recipes</h1>
+
 
 <p>
-    <a href="makes/create">Create New</a>
+    <a href="makes/create" class="btn btn-primary">Create New Recipe</a>
+    
 </p>
 
+<!-- QuickGrid Table for displaying recipes -->
 <QuickGrid Class="table" Items="context.Recipe">
     <PropertyColumn Property="make => make.Name" />
     <PropertyColumn Property="make => make.DateCreated" />
@@ -21,6 +24,7 @@
     <PropertyColumn Property="make => make.CreatedBy" />
     <PropertyColumn Property="make => make.UpdatedBy" />
 
+    <!-- Action links for each recipe -->
     <TemplateColumn Context="make">
         <a href="@($"makes/edit?id={make.Id}")">Edit</a> |
         <a href="@($"makes/details?id={make.Id}")">Details</a> |
@@ -31,10 +35,12 @@
 @code {
     private Project_Food_NutritionContext context = default!;
 
+    // Initialize the context
     protected override void OnInitialized()
     {
         context = DbFactory.CreateDbContext();
     }
 
+    // Clean up resources when disposed
     public async ValueTask DisposeAsync() => await context.DisposeAsync();
 }

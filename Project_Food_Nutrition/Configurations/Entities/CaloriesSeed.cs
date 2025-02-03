@@ -4,12 +4,12 @@ using Project_Food_Nutrition.Domain;
 
 namespace Project_Food_Nutrition.Configurations.Entities
 {
-    public class CaloriesSeed : IEntityTypeConfiguration<Calories>
+    public class CaloriesSeed : IEntityTypeConfiguration<Calorie>
     {
-        public void Configure(EntityTypeBuilder<Calories> builder)
+        public void Configure(EntityTypeBuilder<Calorie> builder)
         {
             builder.HasData(
-new Calories
+new Calorie
 {
     Id = 1,
     Name = "Chicken Salad",
@@ -20,7 +20,7 @@ new Calories
     UpdatedBy = "System"
 },
 
-new Calories
+new Calorie
 {
     Id = 2,
     Name = "Grilled Chicken Sandwich",
@@ -31,7 +31,7 @@ new Calories
     UpdatedBy = "System"
 },
 
-new Calories
+new Calorie
 {
     Id = 3,
     Name = "Avocado Toast with egg ",
@@ -43,7 +43,7 @@ new Calories
 },
 
 
-new Calories
+new Calorie
 {
     Id = 4,
     Name = "Spaghetti Bolognese (1 plate)",
@@ -56,7 +56,7 @@ new Calories
 
 
 
-new Calories
+new Calorie
 {
     Id = 5,
     Name = "Grilled salmon with quinoa and vegetables (1 plate)",
@@ -68,7 +68,7 @@ new Calories
 },
 
 
-new Calories
+new Calorie
 {
     Id = 6,
     Name = "Apple slices with peanut butter (1 serving)",
@@ -79,7 +79,7 @@ new Calories
     UpdatedBy = "System"
 },
 
-new Calories
+new Calorie
 {
     Id = 7,
     Name = "Chocolate chip cookies (1 cookie)",

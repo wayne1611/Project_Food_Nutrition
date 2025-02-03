@@ -12,6 +12,8 @@ builder.Services.AddDbContextFactory<Project_Food_NutritionContext>(options =>
 
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 
+
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 // Add services to the container.
@@ -21,6 +23,9 @@ builder.Services.AddRazorComponents()
 builder.Services.AddCascadingAuthenticationState();
 
 builder.Services.AddScoped<IdentityUserAccessor>();
+
+
+
 
 builder.Services.AddScoped<IdentityRedirectManager>();
 

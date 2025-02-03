@@ -11,10 +11,12 @@ namespace Project_Food_Nutrition.Data
 
         public DbSet<Project_Food_Nutrition.Domain.Macros> Macros { get; set; } = default!;
 
-        public DbSet<Project_Food_Nutrition.Domain.Calories> Calories { get; set; } = default!;
+        public DbSet<Project_Food_Nutrition.Domain.Calorie> Calorie { get; set; } = default!;
         public DbSet<Project_Food_Nutrition.Domain.MacrosTracking> MacrosTracking { get; set; } = default!;
         public DbSet<Project_Food_Nutrition.Domain.Staff> Staff{ get; set; } = default!;
         public DbSet<Project_Food_Nutrition.Domain.Users> User { get; set; } = default!;
+        public DbSet<Project_Food_Nutrition.Domain.CalorieProgress> CalorieProgress { get; set; } = default!;
+        public DbSet<Project_Food_Nutrition.Domain.LoggedCalorie> LoggedCalories { get; set; } = default!;  
 
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -1,8 +1,9 @@
 ﻿
 namespace Project_Food_Nutrition.Domain
 {
-    public class Calories : BaseDomainModel
+    public class Calorie : BaseDomainModel
     {
+         
         public string? Name { get; set; }
         public int? CaloriesCount { get; set; }
 

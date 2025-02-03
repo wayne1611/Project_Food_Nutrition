@@ -15,6 +15,6 @@
         public Recipe? Recipe { get; set; }
 
         // Navigation property for the relationship to NutritionalGoal
-        public ICollection<Calories>? Calories { get; set; }
+        public ICollection<Calorie>? Calories { get; set; }
     }
 }

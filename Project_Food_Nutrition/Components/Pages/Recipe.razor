@@ -1,189 +1,220 @@
 ﻿@page "/Recipe"
+@using Microsoft.EntityFrameworkCore
+@using Project_Food_Nutrition.Data
+@using Project_Food_Nutrition.Domain
+@inject IDbContextFactory<Project_Food_Nutrition.Data.Project_Food_NutritionContext> DbFactory
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider authenticationStateProvider
+
+
+@rendermode InteractiveServer
+
+
 <h3>Recipe Page</h3>
 <h5>Find your best meal to meet your goal</h5>
 
+<!-- Display all recipes in a grid layout -->
+<div class="recipe-card-container">
+    @foreach (var recipe in Recipes)
+    {
+        <div class="recipe-card">
+            <h4>@recipe.Name</h4>
+            <h5>Ingredients:</h5>
+            <ul>
+                @foreach (var ingredient in recipe.Ingredients?.Split(',') ?? Array.Empty<string>())
+                {
+                    <li>@ingredient.Trim()</li>
+                }
+            </ul>
+            <h5>Instructions:</h5>
+            <p>@GetShortDescription(recipe.Instructions)</p>
+
+            <!-- Recipe Card -->
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@recipe.Name</h5> <!-- Title from the database -->
+                    <p class="card-text">@GetShortDescription(recipe.Instructions)</p> <!-- Short description -->
+                    <!-- Button to open modal for this specific recipe -->
+                    <button class="btn btn-primary" @onclick="() => OpenRecipeDetail(recipe)">View Recipe</button>
+                </div>
+                <!-- Image below the text -->
+                <img class="card-img-bottom" src="@GetImageUrl(recipe.Id)" alt="Recipe image">
+            </div>
+        </div>
+    }
+</div>
+
 <style>
-    /* Styling for the overall search container */
-    .search-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
+    body {
+        background-color: #756382; /* Dark Slate Gray */
+        color: #E2C274; /* Olive Yellow for text */
+    }
+
+    .header, .footer {
+        background-color: #9CA8B5; /* Light Slate Gray */
+    }
+
+    button {
+        background-color: #FFDA43; /* Egg Yolk Yellow */
+        color: white;
+    }
+
+    section {
+        background-color: #756382; /* Dark Slate Gray for section background */
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    h1, h2, h3 {
+        color: #E2C274; /* Olive Yellow */
+    }
+
+
+    .recipe-card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
         margin-top: 20px;
     }
 
-    /* Styling for the input field */
-    .search-input {
-        width: 300px;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 25px; /* Fully rounded corners */
-        font-size: 16px;
-        background-color: #e0f7e0; /* Gray background */
-        color: #fff; /* White text color */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-        outline: none; /* Removes focus outline */
-    }
-
-    /* Styling for the search button */
-    .search-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 45px;
-        height: 45px;
-        background-color: #6c757d; /* Gray background */
-        border: none;
-        border-radius: 50%; /* Fully circular button */
-        cursor: pointer;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-        transition: background-color 0.3s ease;
-    }
-
-    /* Search icon styling */
-    .search-icon {
-        color: white;
-        font-size: 18px;
-    }
-
-    /* Hover effect for the button */
-    .search-btn:hover {
-        background-color: #00838f; /* Darker blue on hover */
-    }
-
-    /* Recipe container styling */
-    .recipe-container {
+    .recipe-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        background-color: #6c757d; /* Gray background */
-        border-radius: 25px; /* Rounded corners */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-width: 600px;
-        margin: auto;
-        text-align: left;
-        color: #fff; /* White text color */
+        background-color: white;
+        transition: transform 0.2s ease;
     }
 
-    .recipe-container h4 {
-        text-align: center;
-        color: #fff; /* White text for the recipe title */
+        .recipe-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .recipe-card h4 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .recipe-card h5 {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .recipe-card ul {
+            padding-left: 20px;
+            color: #666;
+        }
+
+        .recipe-card p {
+            color: #777;
+        }
+
+    .modal-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #ddd;
     }
 
-    .recipe-container ul, .recipe-container ol {
-        margin-left: 20px;
-        padding-left: 20px;
+    .modal-footer {
+        background-color: #f8f9fa;
+        border-top: 1px solid #ddd;
+    }
+
+    .btn-success {
+        background-color: #FFB300;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+        .btn-success:hover {
+            background-color: #FF8F00;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .modal-content {
+        border-radius: 10px;
+    }
+
+    .modal-body {
+        padding: 20px;
     }
 </style>
 
-<div class="search-container">
-    <input type="text" placeholder="Search..." class="search-input" />
-    <button class="search-btn">
-        <span class="search-icon">🔍</span>
-    </button>
-</div>
-
-@if (!string.IsNullOrEmpty(currentRecipeTitle))
+<!-- Modal to show full recipe details -->
+@if (showRecipeDetail)
 {
-    <div class="recipe-container">
-        <h4>@currentRecipeTitle</h4>
-
-        <h5>Ingredients:</h5>
-        <ul>
-            @foreach (var ingredient in currentIngredients)
-            {
-                <li>@ingredient</li>
-            }
-        </ul>
-
-        <h5>Preparation Steps:</h5>
-        <ol>
-            @foreach (var step in currentPreparationSteps)
-            {
-                <li>@step</li>
-            }
-        </ol>
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center;">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px; border-radius: 15px; overflow: hidden;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="font-weight: bold; color: #343a40;">Recipe Details</h5>
+                    <button type="button" class="close" @onclick="CloseRecipeDetail" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding: 20px;">
+                    <h4>@selectedRecipe?.Name</h4>
+                    <h5>Ingredients:</h5>
+                    <ul>
+                        @foreach (var ingredient in selectedRecipe?.Ingredients?.Split(',') ?? Array.Empty<string>())
+                        {
+                            <li>@ingredient.Trim()</li>
+                        }
+                    </ul>
+                    <h5>Instructions:</h5>
+                    <p>@selectedRecipe?.Instructions</p>
+                    <img src="@GetImageUrl(selectedRecipe?.Id ?? 0)" alt="Recipe Image" style="width: 100%; max-height: 400px; object-fit: cover;">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CloseRecipeDetail">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 }
-else if (searchTriggered)
-{
-    <p>No recipe found for "@searchQuery".</p>
-}
+
 
 @code {
-    private string searchQuery = string.Empty;
-    private bool searchTriggered = false;
+    private Project_Food_NutritionContext context = default!;
+    private List<Project_Food_Nutrition.Domain.Recipe> Recipes = new();
+    private bool showRecipeDetail = false;
+    private Project_Food_Nutrition.Domain.Recipe? selectedRecipe;
 
-    private string currentRecipeTitle = string.Empty;
-    private List<string> currentIngredients = new List<string>();
-    private List<string> currentPreparationSteps = new List<string>();
-
-    private readonly Dictionary<string, (List<string> Ingredients, List<string> Steps)> recipes = new()
+    protected override async Task OnInitializedAsync()
     {
-        {
-            "Simple Pancakes",
-            (
-                new List<string>
-                {
-                    "1 cup all-purpose flour",
-                    "2 tablespoons sugar",
-                    "1 teaspoon baking powder",
-                    "1/2 teaspoon baking soda",
-                    "Pinch of salt",
-                    "1 cup milk",
-                    "1 large egg",
-                    "2 tablespoons melted butter",
-                    "1 teaspoon vanilla extract"
-                },
-                new List<string>
-                {
-                    "In a large bowl, whisk together flour, sugar, baking powder, baking soda, and salt.",
-                    "In another bowl, mix milk, egg, melted butter, and vanilla extract.",
-                    "Combine wet and dry ingredients and stir until just combined.",
-                    "Heat a non-stick skillet over medium heat and lightly grease it.",
-                    "Pour 1/4 cup of batter onto the skillet and cook until bubbles form on the surface.",
-                    "Flip the pancake and cook until golden brown.",
-                    "Serve warm with syrup or your favorite toppings."
-                }
-            )
-        },
-        {
-            "Fried Rice",
-            (
-                new List<string>
-                {
-                    "2 cups cooked rice",
-                    "1/2 cup diced vegetables",
-                    "2 eggs",
-                    "2 tablespoons soy sauce",
-                    "1 tablespoon sesame oil",
-                    "1/4 cup chopped green onions"
-                },
-                new List<string>
-                {
-                    "Heat sesame oil in a pan over medium heat.",
-                    "Scramble eggs in the pan and set aside.",
-                    "Add diced vegetables to the pan and sauté until tender.",
-                    "Add cooked rice and soy sauce, mixing well.",
-                    "Stir in scrambled eggs and green onions.",
-                    "Cook for another 2-3 minutes and serve hot."
-                }
-            )
-        }
-    };
+        context = await DbFactory.CreateDbContextAsync();
+        Recipes = await context.Recipe.AsNoTracking().ToListAsync();
+    }
 
-    private void SearchRecipe()
+    private string GetImageUrl(int recipeId)
     {
-        searchTriggered = true;
-        if (recipes.TryGetValue(searchQuery, out var recipe))
-        {
-            currentRecipeTitle = searchQuery;
-            currentIngredients = recipe.Ingredients;
-            currentPreparationSteps = recipe.Steps;
-        }
-        else
-        {
-            currentRecipeTitle = string.Empty;
-            currentIngredients.Clear();
-            currentPreparationSteps.Clear();
-        }
+        return $"/Image/healthyfood{recipeId}.jpg";
+    }
+
+    private string GetShortDescription(string instructions)
+    {
+        return instructions.Length > 100 ? instructions.Substring(0, 100) + "..." : instructions;
+    }
+
+    private void OpenRecipeDetail(Project_Food_Nutrition.Domain.Recipe recipe)
+    {
+        selectedRecipe = recipe;
+        showRecipeDetail = true;
+    }
+
+    private void CloseRecipeDetail()
+    {
+        showRecipeDetail = false;
+        selectedRecipe = null;
     }
 }
