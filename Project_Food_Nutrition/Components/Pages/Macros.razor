@@ -1,64 +1,269 @@
 ﻿@page "/Macros"
-@attribute [StreamRendering]
+@rendermode InteractiveServer
 
-<PageTitle>Macros</PageTitle>
+<style>
+    /* Add a teal background to the page */
+    body {
+        background-color: teal;
+        margin: 0;
+        padding: 20px;
+    }
 
-<h1>Macros</h1>
+    /* Ensure the container has padding and white text */
+    .container {
+        background-color: teal;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+    }
 
-<p>This component demonstrates showing data.</p>
+    /* Ensure cards have a white background for contrast */
+    .card {
+        background-color: white;
+        color: black;
+        margin-bottom: 20px;
+    }
 
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+    /* Modal styles */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        opacity: 0; /* Start with 0 opacity */
+        transition: opacity 0.3s ease-in-out; /* Smooth fade-in transition */
+    }
+
+        .modal.show {
+            display: flex; /* Show the modal */
+            opacity: 1; /* Fully visible */
+        }
+
+    .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        color: black;
+        width: 80%;
+        max-width: 500px;
+    }
+
+    .modal-header, .modal-footer {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+
+    .modal-footer {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+
+    .btn-close {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container">
+    <h1 class="page-header text-center mb-5">Food Macros Tracker</h1>
+
+    <div class="row">
+        <!-- Chicken Card -->
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="image/MacrosChicken.jpg" class="card-img-top" alt="Chicken">
+                <div class="card-body">
+                    <h5 class="card-title">Chicken</h5>
+                    <p class="card-text">Rich in protein and low in fat, perfect for muscle building.</p>
+                    <button class="btn btn-primary" @onclick="() => ShowFoodDetails(1)">View Macros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fish Card -->
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="image/MacrosFish.jpg" class="card-img-top" alt="Fish">
+                <div class="card-body">
+                    <h5 class="card-title">Fish</h5>
+                    <p class="card-text">Rich in Omega-3 fatty acids, great for heart health.</p>
+                    <button class="btn btn-primary" @onclick="() => ShowFoodDetails(2)">View Macros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blueberries Card -->
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="image/MacrosBlueberries.jpg" class="card-img-top" alt="Blueberries">
+                <div class="card-body">
+                    <h5 class="card-title">Blueberries</h5>
+                    <p class="card-text">Full of antioxidants, supporting brain health and reducing inflammation.</p>
+                    <button class="btn btn-primary" @onclick="() => ShowFoodDetails(3)">View Macros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rice Card -->
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="image/MacrosRice.jpg" class="card-img-top" alt="Rice">
+                <div class="card-body">
+                    <h5 class="card-title">Rice</h5>
+                    <p class="card-text">High in carbohydrates, providing energy for physical activity.</p>
+                    <button class="btn btn-primary" @onclick="() => ShowFoodDetails(4)">View Macros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Avocado Card -->
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="image/MacrosAvocado.jpg" class="card-img-top" alt="Avocado">
+                <div class="card-body">
+                    <h5 class="card-title">Avocado</h5>
+                    <p class="card-text">Packed with healthy fats, great for heart health and skin nourishment.</p>
+                    <button class="btn btn-primary" @onclick="() => ShowFoodDetails(5)">View Macros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Almonds Card -->
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="image/MacrosAlmond.jpg" class="card-img-top" alt="Almonds">
+                <div class="card-body">
+                    <h5 class="card-title">Almonds</h5>
+                    <p class="card-text">Rich in healthy fats and protein, great for energy and muscle recovery.</p>
+                    <button class="btn btn-primary" @onclick="() => ShowFoodDetails(6)">View Macros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Egg Card -->
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="image/MacrosEgg.jpg" class="card-img-top" alt="Egg">
+                <div class="card-body">
+                    <h5 class="card-title">Egg</h5>
+                    <p class="card-text">A perfect source of high-quality protein and healthy fats for muscle repair.</p>
+                    <button class="btn btn-primary" @onclick="() => ShowFoodDetails(7)">View Macros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sweet Potato Card -->
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="image/MacrosSweetPotato.jpg" class="card-img-top" alt="Sweet Potato">
+                <div class="card-body">
+                    <h5 class="card-title">Sweet Potato</h5>
+                    <p class="card-text">High in fiber and complex carbs, providing long-lasting energy.</p>
+                    <button class="btn btn-primary" @onclick="() => ShowFoodDetails(8)">View Macros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salmon Card -->
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="image/MacrosSalmon.jpg" class="card-img-top" alt="Salmon">
+                <div class="card-body">
+                    <h5 class="card-title">Salmon</h5>
+                    <p class="card-text">Packed with Omega-3 fatty acids, essential for reducing inflammation.</p>
+                    <button class="btn btn-primary" @onclick="() => ShowFoodDetails(9)">View Macros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tofu Card -->
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="image/MacrosTofu.jpg" class="card-img-top" alt="Tofu">
+                <div class="card-body">
+                    <h5 class="card-title">Tofu</h5>
+                    <p class="card-text">A plant-based protein, ideal for vegans and vegetarians, rich in iron and calcium.</p>
+                    <button class="btn btn-primary" @onclick="() => ShowFoodDetails(10)">View Macros</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for displaying food details -->
+    <div class="modal @(selectedFoodDescription != null ? "show" : "")">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@selectedFoodDescription?.Name - Macros</h5>
+                <button type="button" class="btn-close" @onclick="CloseModal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>@selectedFoodDescription?.Description</p>
+                <ul>
+                    <li><strong>Calories:</strong> @selectedFoodDescription?.CaloriesCount</li>
+                    <li><strong>Protein:</strong> @selectedFoodDescription?.Protein g</li>
+                    <li><strong>Carbs:</strong> @selectedFoodDescription?.Carbs g</li>
+                    <li><strong>Fats:</strong> @selectedFoodDescription?.Fats g</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private Food? selectedFoodDescription;
+
+    private List<Food> foods = new();
 
     protected override async Task OnInitializedAsync()
     {
-        // Simulate asynchronous loading to demonstrate streaming rendering
-        await Task.Delay(500);
-
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
-        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        // Simulate fetching foods from the database or service
+        foods = new List<Food>
         {
-            Date = startDate.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).ToArray();
+            new Food { Id = 1, Name = "Chicken", CaloriesCount = 250, Protein = 30, Carbs = 0, Fats = 10, Description = "Chicken is rich in protein and low in fat, making it a great choice for muscle building." },
+            new Food { Id = 2, Name = "Fish", CaloriesCount = 180, Protein = 22, Carbs = 0, Fats = 8, Description = "Fish, particularly fatty fish like salmon, are rich in Omega-3 fatty acids which are beneficial for heart health." },
+            new Food { Id = 3, Name = "Blueberries", CaloriesCount = 70, Protein = 1, Carbs = 17, Fats = 0, Description = "Blueberries are full of antioxidants and are known for supporting brain health and reducing inflammation." },
+            new Food { Id = 4, Name = "Rice", CaloriesCount = 130, Protein = 2, Carbs = 28, Fats = 0, Description = "Rice is a great source of carbohydrates that can provide energy for physical activity and replenish glycogen stores." },
+            new Food { Id = 5, Name = "Avocado", CaloriesCount = 160, Protein = 2, Carbs = 9, Fats = 15, Description = "Packed with healthy fats, great for heart health and skin nourishment." },
+            new Food { Id = 6, Name = "Almonds", CaloriesCount = 160, Protein = 6, Carbs = 6, Fats = 14, Description = "Rich in healthy fats and protein, great for energy and muscle recovery." },
+            new Food { Id = 7, Name = "Egg", CaloriesCount = 70, Protein = 6, Carbs = 1, Fats = 5, Description = "A perfect source of high-quality protein and healthy fats for muscle repair." },
+            new Food { Id = 8, Name = "Sweet Potato", CaloriesCount = 112, Protein = 2, Carbs = 26, Fats = 0, Description = "High in fiber and complex carbs, providing long-lasting energy." },
+            new Food { Id = 9, Name = "Salmon", CaloriesCount = 206, Protein = 22, Carbs = 0, Fats = 13, Description = "Packed with Omega-3 fatty acids, essential for reducing inflammation." },
+            new Food { Id = 10, Name = "Tofu", CaloriesCount = 70, Protein = 8, Carbs = 2, Fats = 4, Description = "A plant-based protein, ideal for vegans and vegetarians, rich in iron and calcium." }
+        };
     }
 
-    private class WeatherForecast
+    private void ShowFoodDetails(int foodId)
     {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        // Show the details for the selected food
+        selectedFoodDescription = foods.FirstOrDefault(f => f.Id == foodId);
+    }
+
+    private void CloseModal()
+    {
+        selectedFoodDescription = null;
+    }
+
+    // Data model for foods
+    private class Food
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int CaloriesCount { get; set; }
+        public int Protein { get; set; }
+        public int Carbs { get; set; }
+        public int Fats { get; set; }
+        public string Description { get; set; }
     }
 }

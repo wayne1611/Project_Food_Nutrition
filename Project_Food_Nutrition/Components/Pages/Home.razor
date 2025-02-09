@@ -1,7 +1,133 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyFitnessPal</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #f7f7f7;
+        }
 
-<h1>Welcome to our food nutrition website ( by Praveen and Wayne)!</h1>
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 50px;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
 
-Welcome to your new app.
+            .header .logo {
+                display: flex;
+                align-items: center;
+            }
+
+                .header .logo img {
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 15px;
+                }
+
+            .header .logo-title {
+                font-size: 24px;
+                font-weight: bold;
+                color: #1abc9c;
+            }
+
+        /* Banner Section */
+        .banner {
+            background-image: url('image/Homepage.jpg'); /* Replace with the correct path */
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out; /* Adding the transition effect */
+        }
+
+            .banner:hover {
+                transform: scale(1.05); /* Zoom-in effect on hover */
+            }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Optional overlay for better text readability */
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out; /* Transition for fade effect */
+        }
+
+        .banner h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .banner p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* Animation after click */
+        .banner.clicked .banner-content {
+            opacity: 0; /* Fade out content */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <img src="/image/Logo.jpg" alt="Logo"> <!-- Replace with your logo path -->
+            <span class="logo-title">MyFitnessPal</span>
+        </div>
+    </div>
+
+    <!-- Banner Section -->
+    <div class="banner" id="banner" onclick="animateBanner()">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h1>BalanceBites: Fuel Your Body Right</h1>
+            <p>Discover the best way to track your fitness and nutrition goals. Your journey starts here.</p>
+        </div>
+    </div>
+
+    <script>
+        function animateBanner() {
+            var banner = document.getElementById('banner');
+            banner.classList.add('clicked'); // Adds the 'clicked' class to trigger fade-out effect
+            setTimeout(function() {
+                alert("Animation Complete!"); // Can replace this with navigation or other actions
+                banner.classList.remove('clicked'); // Resets the animation state
+            }, 500); // Matches the duration of the fade effect
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+﻿@page "/MacrosTracking"
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+<style>
+    body {
+        background-color: #008080; /* Teal background */
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .card {
+        background-color: #ffffff;
+        color: black;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+    }
+
+    .btn-custom {
+        background-color: #1abc9c;
+        color: white;
+        border: none;
+        width: 100%;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background-color: #16a085;
+        }
+
+    .btn-delete {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        width: 100%;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+
+    .list-group-item {
+        font-weight: bold;
+        border: none;
+        background-color: #f8f9fa;
+        color: #333;
+    }
+
+    .section-title {
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+    }
+</style>
+
+<h1 class="text-center mt-3">📌 Set Your Macros Goals</h1>
+
+<div class="container">
+    <div class="card">
+        <h5 class="section-title">Enter Your Macros Goals</h5>
+
+        <div class="mb-3">
+            <label class="form-label">Calories:</label>
+            <input type="number" class="form-control" @bind="calories" placeholder="Enter Calories Goal">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Protein (g):</label>
+            <input type="number" class="form-control" @bind="protein" placeholder="Enter Protein Goal">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Carbohydrates (g):</label>
+            <input type="number" class="form-control" @bind="carbohydrates" placeholder="Enter Carbs Goal">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fats (g):</label>
+            <input type="number" class="form-control" @bind="fats" placeholder="Enter Fats Goal">
+        </div>
+
+        <button class="btn btn-custom mt-2" @onclick="SaveMacrosGoal">
+            💾 Save Macros Goal
+        </button>
+    </div>
+
+    @if (savedCalories > 0 || savedProtein > 0 || savedCarbs > 0 || savedFats > 0)
+    {
+        <div class="card">
+            <h5 class="section-title">📊 Your Saved Macros Goals</h5>
+            <ul class="list-group">
+                <li class="list-group-item">Calories: @savedCalories</li>
+                <li class="list-group-item">Protein: @savedProtein g</li>
+                <li class="list-group-item">Carbohydrates: @savedCarbs g</li>
+                <li class="list-group-item">Fats: @savedFats g</li>
+            </ul>
+            <button class="btn btn-delete mt-3" @onclick="DeleteMacrosGoal">
+                ❌ Delete Macros Goal
+            </button>
+        </div>
+    }
+
+    <button class="btn btn-primary w-100 mt-3" @onclick="GetFoodRecommendations">
+        🍽️ Get Food Recommendations
+    </button>
+
+    @if (recommendations.Count > 0)
+    {
+        <div class="card">
+            <h5 class="section-title">🍽️ Recommended Dishes</h5>
+            <ul class="list-group">
+                @foreach (var food in recommendations)
+                {
+                    <li class="list-group-item">@food</li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+
+@code {
+    private int calories;
+    private int protein;
+    private int carbohydrates;
+    private int fats;
+
+    private int savedCalories;
+    private int savedProtein;
+    private int savedCarbs;
+    private int savedFats;
+
+    private List<string> recommendations = new();
+
+    private void SaveMacrosGoal()
+    {
+        savedCalories = calories;
+        savedProtein = protein;
+        savedCarbs = carbohydrates;
+        savedFats = fats;
+
+        Console.WriteLine($"✅ Macros Saved: Calories={calories}, Protein={protein}, Carbs={carbohydrates}, Fats={fats}");
+    }
+
+    private void DeleteMacrosGoal()
+    {
+        savedCalories = 0;
+        savedProtein = 0;
+        savedCarbs = 0;
+        savedFats = 0;
+        recommendations.Clear();
+
+        Console.WriteLine("❌ Macros Goals Deleted");
+    }
+
+    private void GetFoodRecommendations()
+    {
+        recommendations.Clear();
+
+        if (protein > 50)
+        {
+            recommendations.Add("🥩 Grilled Chicken with Quinoa & Vegetables");
+            recommendations.Add("🍗 Salmon & Spinach Omelet with Sweet Potatoes");
+            recommendations.Add("🐟 Tuna Salad with Chickpeas & Olive Oil");
+        }
+
+        if (calories > 2000)
+        {
+            recommendations.Add("🍛 Beef Stir-Fry with Brown Rice & Cashew Nuts");
+            recommendations.Add("🍕 Whole Wheat Pizza with Chicken & Mozzarella");
+            recommendations.Add("🥙 Chicken Wrap with Avocado & Cheese");
+        }
+
+        if (fats > 40)
+        {
+            recommendations.Add("🥑 Avocado Toast with Poached Eggs & Feta");
+            recommendations.Add("🥜 Peanut Butter Smoothie with Banana");
+            recommendations.Add("🧀 Cheese & Nut Platter with Crackers");
+        }
+
+        if (carbohydrates > 100)
+        {
+            recommendations.Add("🍝 Whole Wheat Pasta with Turkey Meatballs");
+            recommendations.Add("🥣 Oatmeal with Blueberries & Almond Butter");
+            recommendations.Add("🍌 Banana Pancakes with Honey & Walnuts");
+        }
+
+        if (protein > 80)
+        {
+            recommendations.Add("🥩 Steak with Roasted Vegetables & Potatoes");
+            recommendations.Add("🐟 Grilled Salmon with Brown Rice & Kale");
+            recommendations.Add("🍗 Greek Chicken Salad with Feta & Olives");
+        }
+
+        if (fats > 60)
+        {
+            recommendations.Add("🥜 Almond Butter & Dark Chocolate Smoothie");
+            recommendations.Add("🥥 Coconut Milk Curry with Tofu & Vegetables");
+            recommendations.Add("🧀 Cheddar Cheese Omelet with Mushrooms");
+        }
+
+        if (recommendations.Count == 0)
+        {
+            recommendations.Add("⚠️ No recommendations found. Adjust your macros goals.");
+        }
+    }
+}

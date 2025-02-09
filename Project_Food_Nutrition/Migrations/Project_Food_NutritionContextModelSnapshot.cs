@@ -270,8 +270,8 @@ namespace Project_Food_Nutrition.Migrations
                             Id = 1,
                             CaloriesCount = 750,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3574),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3597),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9256),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9270),
                             Name = "Chicken Salad",
                             UpdatedBy = "System",
                             UserName = 0
@@ -281,8 +281,8 @@ namespace Project_Food_Nutrition.Migrations
                             Id = 2,
                             CaloriesCount = 400,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3603),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3604),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9273),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9274),
                             Name = "Grilled Chicken Sandwich",
                             UpdatedBy = "System",
                             UserName = 0
@@ -292,8 +292,8 @@ namespace Project_Food_Nutrition.Migrations
                             Id = 3,
                             CaloriesCount = 250,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3605),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3606),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9276),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9276),
                             Name = "Avocado Toast with egg ",
                             UpdatedBy = "System",
                             UserName = 0
@@ -303,8 +303,8 @@ namespace Project_Food_Nutrition.Migrations
                             Id = 4,
                             CaloriesCount = 600,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3608),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3609),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9306),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9306),
                             Name = "Spaghetti Bolognese (1 plate)",
                             UpdatedBy = "System",
                             UserName = 0
@@ -314,8 +314,8 @@ namespace Project_Food_Nutrition.Migrations
                             Id = 5,
                             CaloriesCount = 450,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3610),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3611),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9308),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9308),
                             Name = "Grilled salmon with quinoa and vegetables (1 plate)",
                             UpdatedBy = "System",
                             UserName = 0
@@ -325,8 +325,8 @@ namespace Project_Food_Nutrition.Migrations
                             Id = 6,
                             CaloriesCount = 200,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3612),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3613),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9310),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9310),
                             Name = "Apple slices with peanut butter (1 serving)",
                             UpdatedBy = "System",
                             UserName = 0
@@ -336,8 +336,8 @@ namespace Project_Food_Nutrition.Migrations
                             Id = 7,
                             CaloriesCount = 100,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3615),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3615),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9312),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9312),
                             Name = "Chocolate chip cookies (1 cookie)",
                             UpdatedBy = "System",
                             UserName = 0
@@ -430,8 +430,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4091),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4091),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9604),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9605),
                             Description = "165 calories.\r\n3.6 g of cholesterol.\r\n31 g of protein.\r\n3.6 g of fat.\r\n0 g of carbohydrate.\r\n0 g of dietary fiber.\r\n0 g of total sugars.\r\n",
                             HealthBenefits = "High in protein, promotes muscle growth and repair.",
                             Name = "Chicken Breast"
@@ -439,8 +439,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 3,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4093),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4093),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9607),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9607),
                             Description = "242 calories.\r\n78 mg of cholesterol.\r\n22.8 g of protein.\r\n16.3 g of fat.\r\n0 g of carbohydrate.\r\n0 g of dietary fiber.\r\n0 g of total sugars.\r\n",
                             HealthBenefits = "Rich in iron, supports healthy blood circulation.",
                             Name = "Beef Steak"
@@ -448,8 +448,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 4,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4095),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4096),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9608),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9609),
                             Description = "206 calories.\r\n63 mg of cholesterol.\r\n22.1 g of protein.\r\n12.4 g of fat.\r\n0 g of carbohydrate.\r\n0 g of dietary fiber.\r\n0 g of total sugars.\r\n",
                             HealthBenefits = "Rich in omega-3 fatty acids, supports brain health.",
                             Name = "Salmon"
@@ -457,8 +457,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 5,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4097),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4097),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9610),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9611),
                             Description = "143 calories.\r\n62 mg of cholesterol.\r\n26.5 g of protein.\r\n3.7 g of fat.\r\n0 g of carbohydrate.\r\n0 g of dietary fiber.\r\n0 g of total sugars.\r\n",
                             HealthBenefits = "Good source of B-vitamins, helps in energy production.",
                             Name = "Pork Tenderloin"
@@ -466,8 +466,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 6,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4099),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4099),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9612),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9612),
                             Description = "99 calories.\r\n0 mg of cholesterol.\r\n0.82 g of protein.\r\n0.38 g of fat.\r\n24.7 g of carbohydrate.\r\n2.6 g of dietary fiber.\r\n46.5 g of total sugars.\r\n",
                             HealthBenefits = "High in vitamin C, boosts immune function.",
                             Name = "Mango"
@@ -475,8 +475,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 7,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4100),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4101),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9614),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9614),
                             Description = "105 calories.\r\n0 mg of cholesterol.\r\n1.3 g of protein.\r\n0.3 g of fat.\r\n27 g of carbohydrate.\r\n3.1 g of dietary fiber.\r\n14.4 g of total sugars.\r\n",
                             HealthBenefits = "High in potassium, supports heart health.",
                             Name = "Banana"
@@ -484,8 +484,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 8,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4102),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4102),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9615),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9616),
                             Description = "95 calories.\r\n0 mg of cholesterol.\r\n0.5 g of protein.\r\n0.3 g of fat.\r\n25 g of carbohydrate.\r\n4.4 g of dietary fiber.\r\n19 g of total sugars.\r\n",
                             HealthBenefits = "High in fiber, promotes digestive health.",
                             Name = "Apple"
@@ -493,8 +493,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 9,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4104),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4104),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9617),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9617),
                             Description = "62 calories.\r\n0 mg of cholesterol.\r\n1.2 g of protein.\r\n0.2 g of fat.\r\n15.4 g of carbohydrate.\r\n3.1 g of dietary fiber.\r\n12.2 g of total sugars.\r\n",
                             HealthBenefits = "Rich in vitamin C, supports immune system.",
                             Name = "Orange"
@@ -502,8 +502,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 10,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4106),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4106),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9619),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9619),
                             Description = "160 calories.\r\n0 mg of cholesterol.\r\n2 g of protein.\r\n15 g of fat.\r\n9 g of carbohydrate.\r\n7 g of dietary fiber.\r\n0.2 g of total sugars.\r\n",
                             HealthBenefits = "Rich in healthy fats, promotes heart health.",
                             Name = "Avocado"
@@ -511,8 +511,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 11,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4107),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4108),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9620),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9621),
                             Description = "32 calories.\r\n0 mg of cholesterol.\r\n0.7 g of protein.\r\n0.3 g of fat.\r\n7.7 g of carbohydrate.\r\n2 g of dietary fiber.\r\n4.9 g of total sugars.\r\n",
                             HealthBenefits = "Rich in antioxidants, supports skin health.",
                             Name = "Strawberries"
@@ -520,8 +520,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 12,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4109),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4109),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9622),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9623),
                             Description = "68 calories.\r\n186 mg of cholesterol.\r\n5.5 g of protein.\r\n4.8 g of fat.\r\n0.6 g of carbohydrate.\r\n0 g of dietary fiber.\r\n0.6 g of total sugars.\r\n",
                             HealthBenefits = "High in protein, supports muscle repair and immune function.",
                             Name = "Egg"
@@ -529,8 +529,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 13,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4111),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4111),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9624),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9624),
                             Description = "112 calories.\r\n0 mg of cholesterol.\r\n2.1 g of protein.\r\n0.1 g of fat.\r\n26.2 g of carbohydrate.\r\n3.9 g of dietary fiber.\r\n5.4 g of total sugars.\r\n",
                             HealthBenefits = "High in vitamin A, promotes healthy vision.",
                             Name = "Sweet Potato"
@@ -538,8 +538,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 14,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4113),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4113),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9625),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9626),
                             Description = "22 calories.\r\n0 mg of cholesterol.\r\n1.1 g of protein.\r\n0.2 g of fat.\r\n4.8 g of carbohydrate.\r\n1.5 g of dietary fiber.\r\n3.2 g of total sugars.\r\n",
                             HealthBenefits = "Rich in lycopene, supports heart health and reduces inflammation.",
                             Name = "Tomato"
@@ -547,8 +547,8 @@ namespace Project_Food_Nutrition.Migrations
                         new
                         {
                             Id = 15,
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4114),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(4115),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9627),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9627),
                             Description = "41 calories.\r\n0 mg of cholesterol.\r\n0.9 g of protein.\r\n0.2 g of fat.\r\n9.6 g of carbohydrate.\r\n2.8 g of dietary fiber.\r\n4.7 g of total sugars.\r\n",
                             HealthBenefits = "High in vitamin A, supports healthy skin and vision.",
                             Name = "Carrot"
@@ -633,8 +633,8 @@ namespace Project_Food_Nutrition.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3883),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3884),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9494),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9495),
                             Ingredients = "Lettuce, Tomato, Cucumber, Olive Oil, Salt, Pepper",
                             Instructions = "1. Chop the lettuce, tomato, and cucumber.\n2. Mix the ingredients in a bowl.\n3. Add olive oil, salt, and pepper to taste.\n4. Toss and serve.",
                             Name = "Simple Salad",
@@ -644,8 +644,8 @@ namespace Project_Food_Nutrition.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3886),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3886),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9497),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9497),
                             Ingredients = "Eggs, Butter, Salt, Pepper",
                             Instructions = "1. Crack the eggs into a bowl.\n2. Whisk with a fork.\n3. Heat butter in a pan.\n4. Pour in eggs and stir until cooked.\n5. Add salt and pepper to taste.",
                             Name = "Scrambled Eggs",
@@ -655,8 +655,8 @@ namespace Project_Food_Nutrition.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3888),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3888),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9499),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9500),
                             Ingredients = "Spaghetti, Garlic, Olive Oil, Red Pepper Flakes, Parsley, Salt",
                             Instructions = "1. Boil pasta in salted water until al dente.\n2. In a pan, heat olive oil and sauté garlic until golden.\n3. Add red pepper flakes.\n4. Toss pasta with garlic and oil.\n5. Garnish with parsley and serve.",
                             Name = "Pasta Aglio e Olio",
@@ -666,8 +666,8 @@ namespace Project_Food_Nutrition.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3890),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3890),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9501),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9502),
                             Ingredients = "Bread, Cheese, Butter",
                             Instructions = "1. Butter both sides of two slices of bread.\n2. Place cheese between the slices.\n3. Grill on medium heat until both sides are golden brown.",
                             Name = "Grilled Cheese Sandwich",
@@ -677,8 +677,8 @@ namespace Project_Food_Nutrition.Migrations
                         {
                             Id = 5,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3892),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3892),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9503),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9503),
                             Ingredients = "Tomatoes, Onion, Garlic, Olive Oil, Salt, Pepper, Water",
                             Instructions = "1. Sauté onion and garlic in olive oil.\n2. Add chopped tomatoes and cook until soft.\n3. Add water and simmer.\n4. Blend the soup and season with salt and pepper.",
                             Name = "Tomato Soup",
@@ -688,8 +688,8 @@ namespace Project_Food_Nutrition.Migrations
                         {
                             Id = 6,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3893),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3894),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9505),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9505),
                             Ingredients = "Banana, Strawberries, Milk, Honey",
                             Instructions = "1. Add all ingredients into a blender.\n2. Blend until smooth.\n3. Serve chilled.",
                             Name = "Fruit Smoothie",
@@ -699,8 +699,8 @@ namespace Project_Food_Nutrition.Migrations
                         {
                             Id = 7,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3895),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3896),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9507),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9507),
                             Ingredients = "Eggs, Milk, Salt, Pepper, Butter",
                             Instructions = "1. Whisk eggs with milk, salt, and pepper.\n2. Heat butter in a pan.\n3. Pour in the egg mixture and cook until set.\n4. Fold and serve.",
                             Name = "Omelette",
@@ -710,8 +710,8 @@ namespace Project_Food_Nutrition.Migrations
                         {
                             Id = 8,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3897),
-                            DateUpdated = new DateTime(2025, 1, 27, 11, 12, 40, 545, DateTimeKind.Local).AddTicks(3898),
+                            DateCreated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9509),
+                            DateUpdated = new DateTime(2025, 2, 3, 10, 19, 57, 347, DateTimeKind.Local).AddTicks(9509),
                             Ingredients = "Chicken Breast, Bell Peppers, Soy Sauce, Garlic, Ginger",
                             Instructions = "1. Slice chicken and bell peppers.\n2. Stir-fry garlic and ginger in a pan.\n3. Add chicken and cook until browned.\n4. Add bell peppers and soy sauce, stir-fry until cooked.",
                             Name = "Chicken Stir-fry",

@@ -1,0 +1,119 @@
+﻿
+@using Project_Food_Nutrition.Domain
+@inject NavigationManager NavigationManager
+
+<h1 class="text-center mb-4">Set Your Macro Goals</h1>
+
+<div class="container macros-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4">
+                <h4 class="text-center">Enter Your Target Macros</h4>
+                <div class="form-group mb-3">
+                    <label>Calories</label>
+                    <input type="number" class="form-control" @bind="userMacros.Calories" placeholder="Enter target calories">
+                </div>
+                <div class="form-group mb-3">
+                    <label>Protein (g)</label>
+                    <input type="number" class="form-control" @bind="userMacros.Protein" placeholder="Enter target protein">
+                </div>
+                <div class="form-group mb-3">
+                    <label>Carbohydrates (g)</label>
+                    <input type="number" class="form-control" @bind="userMacros.Carbohydrates" placeholder="Enter target carbs">
+                </div>
+                <div class="form-group mb-3">
+                    <label>Fats (g)</label>
+                    <input type="number" class="form-control" @bind="userMacros.Fats" placeholder="Enter target fats">
+                </div>
+                <button class="btn btn-primary w-100" @onclick="GetFoodRecommendations">Get Recommendations</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Display Food Recommendations -->
+    @if (foodRecommendations.Any())
+    {
+        <div class="row mt-5">
+            <h2 class="text-center">Recommended Foods</h2>
+            @foreach (var food in foodRecommendations)
+            {
+                <div class="col-md-4">
+                    <div class="card food-card">
+                        <div class="card-body">
+                            <h5 class="card-title">@food.Name</h5>
+                            <p class="card-text">@food.Description</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Calories:</strong> @food.CaloriesCount</li>
+                                <li class="list-group-item"><strong>Protein:</strong> @food.Protein g</li>
+                                <li class="list-group-item"><strong>Carbs:</strong> @food.Carbs g</li>
+                                <li class="list-group-item"><strong>Fats:</strong> @food.Fats g</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    .macros-container {
+        background-color: #e0f7fa; /* Teal background */
+        padding: 30px;
+        border-radius: 10px;
+    }
+
+    .food-card {
+        margin-bottom: 20px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .food-card:hover {
+            transform: scale(1.05);
+        }
+</style>
+
+@code {
+    private MacrosTracking userMacros = new();
+    private List<Food> foodRecommendations = new();
+
+    private void GetFoodRecommendations()
+    {
+        foodRecommendations.Clear();
+
+        // Food database
+        var allFoods = new List<Food>
+        {
+            new Food { Name = "Chicken", CaloriesCount = 250, Protein = 30, Carbs = 0, Fats = 10, Description = "High protein and low fat." },
+            new Food { Name = "Fish", CaloriesCount = 180, Protein = 22, Carbs = 0, Fats = 8, Description = "Omega-3 rich, great for heart health." },
+            new Food { Name = "Blueberries", CaloriesCount = 70, Protein = 1, Carbs = 17, Fats = 0, Description = "High in antioxidants." },
+            new Food { Name = "Rice", CaloriesCount = 130, Protein = 2, Carbs = 28, Fats = 0, Description = "Good source of carbohydrates for energy." },
+            new Food { Name = "Avocado", CaloriesCount = 160, Protein = 2, Carbs = 9, Fats = 15, Description = "Great source of healthy fats." },
+            new Food { Name = "Almonds", CaloriesCount = 160, Protein = 6, Carbs = 6, Fats = 14, Description = "Rich in protein and healthy fats." },
+            new Food { Name = "Egg", CaloriesCount = 70, Protein = 6, Carbs = 1, Fats = 5, Description = "Excellent source of protein and fats." },
+            new Food { Name = "Sweet Potato", CaloriesCount = 112, Protein = 2, Carbs = 26, Fats = 0, Description = "Good source of fiber and energy." },
+            new Food { Name = "Salmon", CaloriesCount = 206, Protein = 22, Carbs = 0, Fats = 13, Description = "Rich in Omega-3 fatty acids." },
+            new Food { Name = "Tofu", CaloriesCount = 70, Protein = 8, Carbs = 2, Fats = 4, Description = "Plant-based protein source." }
+        };
+
+        // Filter recommendations based on user goals
+        foodRecommendations = allFoods
+            .Where(f =>
+                (userMacros.Calories >= f.CaloriesCount) ||
+                (userMacros.Protein >= f.Protein) ||
+                (userMacros.Carbohydrates >= f.Carbs) ||
+                (userMacros.Fats >= f.Fats))
+            .Take(6) // Limit recommendations
+            .ToList();
+    }
+
+    private class Food
+    {
+        public string Name { get; set; } = string.Empty;
+        public int CaloriesCount { get; set; }
+        public int Protein { get; set; }
+        public int Carbs { get; set; }
+        public int Fats { get; set; }
+        public string Description { get; set; } = string.Empty;
+    }
+}

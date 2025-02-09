@@ -6,9 +6,7 @@
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider authenticationStateProvider
 
-
 @rendermode InteractiveServer
-
 
 <h3>Recipe Page</h3>
 <h5>Find your best meal to meet your goal</h5>
@@ -45,9 +43,13 @@
 </div>
 
 <style>
+    /* Apply a Teal Background */
     body {
-        background-color: #756382; /* Dark Slate Gray */
-        color: #E2C274; /* Olive Yellow for text */
+        background-color: #008080; /* Teal background */
+        color: white; /* Ensure text is readable */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
     }
 
     .header, .footer {
@@ -60,15 +62,14 @@
     }
 
     section {
-        background-color: #756382; /* Dark Slate Gray for section background */
+        background-color: #008080; /* Teal background */
         padding: 20px;
         border-radius: 8px;
     }
 
     h1, h2, h3 {
-        color: #E2C274; /* Olive Yellow */
+        color: #FFD700; /* Gold */
     }
-
 
     .recipe-card-container {
         display: grid;
@@ -182,7 +183,6 @@
         </div>
     </div>
 }
-
 
 @code {
     private Project_Food_NutritionContext context = default!;
